@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grovon — Empowering Your Growth</title>
+  <meta name="description" content="Grovon is a technology-driven growth partner for AI-powered sales enablement, intelligent process outsourcing, automation, and digital transformation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --bg-alt:#0e1421;
+      --card:#121a2b;
+      --muted:#9fb0cc;
+      --text:#e7eefc;
+      --primary: #6ae2ff;
+      --accent: #7c6cff;
+      --success:#33e1b7;
+      --warning:#ffd166;
+      --danger:#ff6b6b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-sm:12px;
+      --glass: rgba(255,255,255,.06);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(108,99,255,.25), transparent 60%), radial-gradient(900px 450px at -10% 20%, rgba(106,226,255,.18), transparent 60%), var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1200px, 92vw); margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(12px); background:linear-gradient(180deg, rgba(11,15,23,.85), rgba(11,15,23,.55)); border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:70px}
+    .brand{display:flex; gap:.6rem; align-items:center; font-weight:800; letter-spacing:.5px}
+    .brand .logo{width:34px; height:34px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--primary)); box-shadow:0 8px 24px rgba(124,108,255,.35)}
+    .brand span{font-family:"Plus Jakarta Sans", Inter, sans-serif}
+    .menu{display:flex; gap:1.2rem; align-items:center}
+    .menu a{opacity:.9; padding:.6rem .9rem; border-radius:12px; transition:all .25s}
+    .menu a:hover{background:var(--glass); opacity:1}
+    .cta-btn{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#0a0f18; font-weight:700; padding:.7rem 1rem; border-radius:14px; box-shadow:0 8px 24px rgba(106,226,255,.25); border:0}
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero .container{display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; align-items:center; min-height:78vh; padding: 3.5rem 0}
+    .kicker{color:var(--primary); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.82rem}
+    h1{font-size: clamp(2.2rem, 2.6vw + 1.2rem, 4rem); line-height:1.05; margin:.6rem 0 1rem; font-weight:900}
+    .lead{font-size: clamp(1rem, .5vw + .9rem, 1.2rem); color:var(--muted); max-width:60ch}
+    .hero-cta{display:flex; gap:1rem; margin-top:1.6rem; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.05rem; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:var(--glass); color:var(--text); font-weight:700}
+    .btn.primary{background:linear-gradient(135deg,var(--primary),var(--accent)); color:#0b0f17; border-color:transparent}
+    .badges{display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap}
+    .badge{font-size:.82rem; padding:.35rem .6rem; border:1px solid rgba(255,255,255,.08); border-radius:999px; background:rgba(255,255,255,.05)}
+
+    .glass-card{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    .lead-form{padding:1.2rem; display:grid; gap:.8rem}
+    .field{display:grid; gap:.35rem}
+    label{font-size:.9rem; color:var(--muted)}
+    input, textarea, select{width:100%; padding:.85rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0c1320; color:var(--text)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:.8rem}
+
+    /* Sections */
+    section{padding: 4rem 0}
+    .section-title{font-size:clamp(1.6rem, 2vw + .9rem, 2.4rem); margin:0 0 1rem; font-weight:800}
+    .section-lead{color:var(--muted); max-width:70ch}
+
+    /* Services */
+    .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:2rem}
+    .card{grid-column: span 6; padding:1.2rem; position:relative; overflow:hidden}
+    .card h3{margin:.2rem 0 .6rem}
+    .chip{position:absolute; top:14px; right:14px; font-size:.75rem; padding:.25rem .55rem; border-radius:999px; background:rgba(124,108,255,.15); border:1px solid rgba(124,108,255,.35)}
+
+    /* Accordions / Lists */
+    details{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:1rem 1rem .6rem; box-shadow:var(--shadow)}
+    summary{cursor:pointer; list-style:none; font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    details + details{margin-top:.8rem}
+
+    /* Grid helpers */
+    .col-4{grid-column:span 4}
+    .col-6{grid-column:span 6}
+    .col-8{grid-column:span 8}
+    .col-12{grid-column:span 12}
+    @media (max-width: 900px){
+      .hero .container{grid-template-columns:1fr; padding:2.2rem 0}
+      .grid-2{grid-template-columns:1fr}
+      .card{grid-column: span 12}
+    }
+
+    /* Animations */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease}
+    .reveal.in{opacity:1; transform:none}
+    .floaty{animation: floaty 6s ease-in-out infinite}
+    @keyframes floaty { 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-10px)} }
+    .shine{position:relative}
+    .shine:before{content:""; position:absolute; inset:0; background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.15) 40%, transparent 60%); transform:skewX(-20deg) translateX(-120%); animation: shine 5.5s linear infinite}
+    @keyframes shine{ 0%{ transform:skewX(-20deg) translateX(-120%)} 100%{ transform:skewX(-20deg) translateX(120%)} }
+    .pulse{box-shadow:0 0 0 0 rgba(106,226,255,.7); animation:pulse 2.5s infinite}
+    @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(106,226,255,.6)} 70%{box-shadow:0 0 0 22px rgba(106,226,255,0)} 100%{box-shadow:0 0 0 0 rgba(106,226,255,0)} }
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(11,15,23,.4), rgba(11,15,23,.9))}
+    .foot-grid{display:grid; grid-template-columns: 1.2fr .8fr .8fr .8fr; gap:1.2rem}
+    .foot-grid h4{margin:.2rem 0 .6rem}
+    .muted{color:var(--muted)}
+    @media (max-width: 900px){ .foot-grid{grid-template-columns:1fr 1fr} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12c0-4.418 3.582-8 8-8a8 8 0 0 1 6.928 4M4 12a8 8 0 0 0 8 8c3.09 0 5.76-1.757 7.072-4M4 12h16" stroke="#0b0f17" stroke-width="2"/></svg></span>
+        <span>Grovon</span>
+      </a>
+      <nav class="menu">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#culture">Culture</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact" class="cta-btn pulse">Get a Free Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="reveal in">
+        <div class="kicker">Welcome to Grovon – Your Partner in Empowering your GROWTH</div>
+        <h1 class="shine">Accelerate Revenue, Scale Smarter</h1>
+        <p class="lead">Fueling technology with advanced revenue growth, AI-powered sales enablement, business process intelligence and digital transformation solutions. We help enterprises optimize client acquisition and scale operations with measurable outcomes.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn primary">Request a Proposal</a>
+          <a href="#services" class="btn">Explore Services</a>
+        </div>
+        <div class="badges">
+          <span class="badge">AI‑Driven</span>
+          <span class="badge">Outcome‑Focused</span>
+          <span class="badge">Global Delivery</span>
+        </div>
+      </div>
+      <aside class="glass-card floaty">
+        <form class="lead-form" id="leadForm" aria-labelledby="leadFormTitle">
+          <h3 id="leadFormTitle" style="margin:0">Get a Free Consultation</h3>
+          <div class="grid-2">
+            <div class="field"><label for="fname">First name</label><input id="fname" name="fname" required></div>
+            <div class="field"><label for="lname">Last name</label><input id="lname" name="lname" required></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label for="email">Work email</label><input id="email" type="email" name="email" required></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone"></div>
+          </div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company"></div>
+          <div class="grid-2">
+            <div class="field"><label for="interest">I’m interested in</label>
+              <select id="interest" name="interest">
+                <option>Sales Enablement</option>
+                <option>Demand Generation</option>
+                <option>Intelligent Process Outsourcing</option>
+                <option>Hyperautomation</option>
+                <option>CX Management</option>
+              </select>
+            </div>
+            <div class="field"><label for="time">Preferred time</label><input id="time" name="time" placeholder="e.g. Tue 3–5 PM IST"></div>
+          </div>
+          <button class="cta-btn" type="submit">Schedule Demo</button>
+          <small class="muted">By submitting, you agree to be contacted about Grovon services.</small>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <section id="services" class="container">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-lead">Accelerating business growth with end‑to‑end Intelligent Process Outsourcing (IPO) and AI‑powered go‑to‑market — specializing in revenue acceleration, intelligent sales enablement, scalable automation, and data‑driven digital transformation.</p>
+    <div class="cards">
+      <article class="card glass-card col-6 reveal"><span class="chip">Go‑to‑Market</span>
+        <h3>Demand Generation & Lead Intelligence</h3>
+        <p>Targeted outbound + inbound powered by AI to identify, qualify, and nurture high‑intent prospects for accelerated pipeline.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Sales</span>
+        <h3>Sales Development & Digital Prospecting</h3>
+        <p>Omnichannel outreach including AI‑enhanced calling, personalized email, and social selling to set qualified appointments.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Enablement</span>
+        <h3>Sales Enablement Technology & Support</h3>
+        <p>CRM platforms, AI analytics, and adaptive content tools that help teams close faster and smarter.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Intelligence</span>
+        <h3>Revenue Pipeline Orchestration</h3>
+        <p>Predictive analytics and automation across funnel stages to maximize conversion and deal velocity.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Operations</span>
+        <h3>Order Management & Transaction Processing</h3>
+        <p>Streamlined capture, invoicing automation, and seamless coordination between sales, fulfillment, and delivery.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Growth</span>
+        <h3>Customer Lifetime Value Management</h3>
+        <p>Data‑driven upsell, cross‑sell, retention, and recurring‑revenue strategies.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Analytics</span>
+        <h3>Sales Performance Intelligence</h3>
+        <p>Advanced dashboards and forecasting to guide strategy and execution.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">IPO</span>
+        <h3>Intelligent Process Outsourcing</h3>
+        <p>AI, cloud, and data analytics to transform back‑ and front‑office processes beyond traditional outsourcing.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Automation</span>
+        <h3>Hyperautomation Solutions</h3>
+        <p>RPA + ML + AI to automate complex workflows end‑to‑end for scale and efficiency.</p>
+      </article>
+      <article class="card glass-card col-6 reveal"><span class="chip">Engagement</span>
+        <h3>Outcome‑Based Models & CX Management</h3>
+        <p>Flexible contracts aligned to KPIs and comprehensive CX outsourcing for loyalty and advocacy.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2 class="section-title">About Grovon</h2>
+    <p class="section-lead">We partner with technology innovators and HR leaders to transform growth trajectories with AI‑driven enablement, business process intelligence, and digital transformation. Our hybrid workforce and co‑sourcing models deliver measurable outcomes at enterprise scale.</p>
+
+    <div class="cards">
+      <article class="card glass-card col-6 reveal">
+        <h3>Leadership & Board</h3>
+        <details open>
+          <summary>Leadership Profiles (Placeholders)</summary>
+          <ul class="muted">
+            <li>CEO – Mr. Srinath Gururaja Rao</li>
+            <li>Chief Strategy Officer – Mr. Sanskar Shukla</li>
+            <li>Chief Marketing Officer – Mr. Yogesh Singh</li>
+            <li>Tech Boss– Mr. Atharv</li>
+          </ul>
+        </details>
+        <!-- <details>
+          <summary>Board of Directors</summary>
+          <p class="muted">Add directors’ profiles and governance notes.</p>
+        </details> -->
+      </article>
+
+      <article class="card glass-card col-6 reveal">
+        <h3>Global Locations</h3>
+        <ul class="muted">
+          <li>Bengaluru, India</li>
+          <li>Jabalpur, India</li>
+        </ul>
+        <h3 style="margin-top:1rem">Events</h3>
+        <details>
+          <summary>Upcoming & Past Events</summary>
+          <p class="muted">Add event list and write‑ups here.</p>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section id="sustainability" class="container">
+    <h2 class="section-title">Sustainability at Grovon</h2>
+    <p class="section-lead">We align with the UN SDGs and integrate climate action, inclusive growth, and responsible governance across operations.</p>
+
+    <div class="cards">
+      <article class="card glass-card col-6 reveal">
+        <h3>Our Climate Commitment</h3>
+        <p>Reduce GHG emissions via energy‑efficient tech, cloud infrastructure, and automation; pursue science‑based targets and resource efficiency.</p>
+      </article>
+      <article class="card glass-card col-6 reveal">
+        <h3>People & Communities</h3>
+        <p>Equitable hiring, upskilling programs, and employee‑driven initiatives that support diverse, thriving communities.</p>
+      </article>
+      <article class="card glass-card col-12 reveal">
+        <details>
+          <summary>Policies & Documents</summary>
+          <div class="muted">
+            <p>Code of Conduct • CSR Policy • Employee Health & Safety • Environmental Policy • Supplier Code • Human Rights • CSR & Sustainability Committee Charter • Whistleblower • Sustainability Policy • Global Privacy • Anti‑Money Laundering • Diversity, Equity & Inclusion</p>
+          </div>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section id="csr" class="container">
+    <h2 class="section-title">Corporate Social Responsibility</h2>
+    <p class="section-lead">We build sustainable communities with hands‑on volunteering, skill programs, and community empowerment that drive real outcomes.</p>
+    <details class="reveal" open>
+      <summary>Our Approach</summary>
+      <p class="muted">Beyond philanthropy: engage employees, support education and livelihoods, and embed equity and stewardship as growth pillars.</p>
+    </details>
+  </section>
+
+  <section id="culture" class="container">
+    <h2 class="section-title">The People of Grovon</h2>
+    <p class="section-lead">Grovon Together is our culture — five values guide how we think, collaborate, and act.</p>
+    <div class="cards">
+      <article class="card glass-card col-6 reveal">
+        <h3>Our Five Guiding Values</h3>
+        <ul class="muted">
+          <li>Be Empathetic and Collaborative</li>
+          <li>Stay Purpose‑Driven</li>
+          <li>Own Outcomes with Agility</li>
+          <li>Innovate Fearlessly</li>
+          <li>Collective Intelligence Wins</li>
+        </ul>
+      </article>
+      <article class="card glass-card col-6 reveal">
+        <h3>Life at Grovon</h3>
+        <ul class="muted">
+          <li>Flexible Leaves</li>
+          <li>Continuous Learning</li>
+          <li>Structured Benefits</li>
+          <li>Aligned Goals & Performance (VISTA)</li>
+          <li>Emotional Wellbeing (EAP)</li>
+          <li>Transparent Communications</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="careers" class="container">
+    <h2 class="section-title">Careers — Be a Grovon, Empower Your Growth!</h2>
+    <p class="section-lead">Explore openings across Sales, Operations, HR, Finance, and Learning & Development.</p>
+
+    <details class="reveal" open>
+      <summary><strong>Sales Operations Manager</strong> • HQ • Reports to Chief Growth Officer</summary>
+      <ul class="muted">
+        <li>Lead 5 Sales Team Leads (≈55 team size). Own forecasting, pipeline health, CRM integrity, process excellence.</li>
+        <li>8+ years in sales ops/management; analytics, compliance, telephony/CRM expertise.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>Sales Team Lead / Leader</strong> • Regional • Reports to Sales Ops Manager</summary>
+      <ul class="muted">
+        <li>Coach and manage 10–12 CAEs; hit targets; ensure data standards and high‑performance culture.</li>
+        <li>5+ years leadership in recruitment/tech sales; funnel analysis; resilience; communication.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>Quality Lead</strong> • HQ • Reports to Head of Operations</summary>
+      <ul class="muted">
+        <li>Define and improve quality standards, audits, compliance, RCA, and corrective actions.</li>
+        <li>5–7 years in quality management (BPO/KPO); strong analytics and collaboration.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>HR Manager</strong> • HQ • Reports to CPO</summary>
+      <ul class="muted">
+        <li>Own TA, retention, training, culture, payroll, compliance; design scalable HR processes.</li>
+        <li>7+ years HR leadership; policy design; team leadership; communication.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>Finance Manager</strong> • HQ • Reports to CFO</summary>
+      <ul class="muted">
+        <li>FP&A, budgeting, reporting, compliance; cashflow and controls; risk‑aware analysis.</li>
+        <li>7+ years finance mgmt; ERP/accounting software; leadership.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>Trainer — Soft Skills & Behavior</strong> • Training Center • Reports to L&D Head</summary>
+      <ul class="muted">
+        <li>Design and deliver engaging programs; assess needs; coach; measure impact.</li>
+        <li>5+ years training experience; strong facilitation; customization across audiences.</li>
+      </ul>
+    </details>
+    <details class="reveal">
+      <summary><strong>Process Training Specialist</strong> • Training Center • Reports to Operations Head</summary>
+      <ul class="muted">
+        <li>Deliver process training; develop materials; assessments; continuous improvement.</li>
+        <li>3–5 years process training (BPO/KPO); documentation; adult learning.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="contact" class="container">
+    <h2 class="section-title">Speak with an Expert</h2>
+    <p class="section-lead">Connect with a Grovon expert today. Let’s explore solutions tailored to your needs.</p>
+    <div class="cards">
+      <article class="card glass-card col-8 reveal">
+        <form class="lead-form" id="contactForm">
+          <div class="grid-2">
+            <div class="field"><label for="cname">Name</label><input id="cname" required></div>
+            <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" required></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label for="ccompany">Company</label><input id="ccompany"></div>
+            <div class="field"><label for="cphone">Phone</label><input id="cphone"></div>
+          </div>
+          <div class="field"><label for="cmsg">How can we help?</label><textarea id="cmsg" rows="4"></textarea></div>
+          <button class="cta-btn" type="submit">Request a Callback</button>
+        </form>
+      </article>
+      <article class="card glass-card col-4 reveal">
+        <h3>Visit Us</h3>
+        <p class="muted">Bengaluru • Jabalpur</p>
+        <p class="muted">info@grovon.in<br/>+91‑92380‑00455</p>
+        <p class="muted">Mon–Fri • 9:30–18:30 IST</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="padding:2.2rem 0">
+      <div class="foot-grid">
+        <div>
+          <div class="brand" style="margin-bottom:.6rem"><span class="logo"></span><span>Grovon</span></div>
+          <p class="muted">AI‑powered sales enablement, intelligent outsourcing, and digital transformation to accelerate revenue and scale operations.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a><br>
+          <a href="#sustainability">Sustainability</a><br>
+          <a href="#culture">Culture</a><br>
+          <a href="#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Overview</a><br>
+          <a href="#csr">CSR</a>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <a href="#contact">Request a Proposal</a><br>
+          <span class="muted">© <span id="year"></span> Grovon. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Simple form handlers
+    function serialize(form){ return Array.from(new FormData(form)).reduce((a,[k,v])=> (a[k]=v, a),{}) }
+    function toast(msg){
+      const t=document.createElement('div');
+      t.textContent=msg; t.style.position='fixed'; t.style.bottom='24px'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.padding='12px 16px'; t.style.background='rgba(20,30,48,.96)'; t.style.border='1px solid rgba(255,255,255,.12)'; t.style.borderRadius='12px'; t.style.zIndex='9999'; document.body.appendChild(t);
+      setTimeout(()=>t.remove(), 2400);
+    }
+    document.getElementById('leadForm').addEventListener('submit', (e)=>{ e.preventDefault(); const data=serialize(e.target); console.log('Lead:', data); toast('Thanks! We\'ll reach out shortly.'); e.target.reset(); });
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{ e.preventDefault(); const data=serialize(e.target); console.log('Contact:', data); toast('Request received — our team will contact you.'); e.target.reset(); });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
